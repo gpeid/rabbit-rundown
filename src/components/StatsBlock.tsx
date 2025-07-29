@@ -13,7 +13,7 @@ const StatsBlock = () => {
                             <td className="stat-label">{key}:</td>
                             {Object.entries(value).map(([subKey, subValue]) => (
                                 <tr key={subKey} className="stat-value">
-                                    <td>{subKey}: {subValue}</td>
+                                    <td>{subKey}: {String(subValue)}</td>
                                 </tr>
                             ))}
                         </tr>

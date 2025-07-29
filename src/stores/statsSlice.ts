@@ -1,7 +1,12 @@
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
-const useStatsStore = create()(
+type StatsState = {
+    stats: object;
+    setStats: (stats: object) => void;
+};
+
+const useStatsStore = create<StatsState>()(
     persist((set) => ({
         stats: {},
         setStats: (stats: object) => set(({ stats: stats })),

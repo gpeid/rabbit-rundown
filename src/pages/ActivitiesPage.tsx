@@ -1,3 +1,4 @@
+import type { Key } from "react";
 import useActivitiesStore from "../stores/activitiesSlice";
 
 const ActivitiesPage = () => {
@@ -11,7 +12,7 @@ const ActivitiesPage = () => {
         <div>
           <h2>Activities</h2>
           <ul>
-            {activities.map((activity, index) => (
+            {activities.map((activity: object, index: Key | null | undefined) => (
               <li key={index}>
                 <pre>{JSON.stringify(activity, null, 2)}</pre>
               </li>

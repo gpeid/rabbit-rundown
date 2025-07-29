@@ -1,6 +1,13 @@
 import { create } from 'zustand';
 
-const useActivitiesStore = create((set) => ({
+type ActivitiesState = {
+    stravaActivities: Array<object>;
+    setStravaActivities: (activities: Array<object>) => void;
+    addStravaActivity: (activity: object) => void;
+    clearStravaActivities: () => void;
+};
+
+const useActivitiesStore = create<ActivitiesState>((set) => ({
     stravaActivities: [],
     setStravaActivities: (activities: Array<object>) => set({ stravaActivities: activities }),
     addStravaActivity: (activity: object) => set((state) => ({

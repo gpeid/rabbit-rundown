@@ -17,16 +17,26 @@
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
+type Athlete = {
+    id: string;
+    firstname: string;
+    lastname: string;
+    city: string;
+    state: string;
+    country: string;
+    profile: string;
+};
+
 type AthleteState = {
-    stravaAthlete: object | null;
-    setStravaAthlete: (athlete: object) => void;
+    stravaAthlete: Athlete | null;
+    setStravaAthlete: (athlete: Athlete) => void;
 };
 
 const useAthleteStore = create<AthleteState>()(
     persist(
         (set) => ({
             stravaAthlete: null,
-            setStravaAthlete: (athlete: object) => set({ stravaAthlete: athlete }),
+            setStravaAthlete: (athlete: Athlete) => set({ stravaAthlete: athlete }),
         }),
         {
             name: 'athlete-storage', // name of item in storage

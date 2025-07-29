@@ -12,7 +12,7 @@ const StatsPage = () => {
   const stats = useStatsStore((state) => state.stats);
   const stravaAthlete = useAthleteStore((state) => state.stravaAthlete);
   useEffect(() => {
-    const getStravaAthleteStats = async (id: number) => {
+    const getStravaAthleteStats = async (id: string | undefined) => {
       if (!stravaToken) {
         console.error("Strava token is not available");
         navigate("/"); // Navigate to the home page if token is not available

@@ -1,34 +1,23 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import './App.css';
-import { createClient } from '@supabase/supabase-js';
+// import { createClient } from '@supabase/supabase-js';
 import useAthleteStore from './stores/athleteSlice';
-import StatsBlock from './components/StatsBlock';
-import useActivitiesStore from './stores/activitiesSlice';
-import useStatsStore from './stores/statsSlice';
+// import useActivitiesStore from './stores/activitiesSlice';
 import useStravaAuthStore from './stores/stravaAuthSlice';
 import NavigationMenu from './components/NavigationMenu';
-import { useNavigate } from 'react-router';
 
-const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_ANON_KEY
-);
+// const supabase = createClient(
+//   import.meta.env.VITE_SUPABASE_URL,
+//   import.meta.env.VITE_SUPABASE_ANON_KEY
+// );
 
-type Group = {
-  id: number;
-  group_name: string;
-  has_potty_episode: boolean;
-};
+// type Group = {
+//   id: number;
+//   group_name: string;
+//   has_potty_episode: boolean;
+// };
 
 function App() {
-  const [groups, setGroups] = useState<Group[]>([]);
-  const [code, setCode] = useState<string | null>(null);
-  const [token, setToken] = useState<string | null>(null);
-  const [athlete, setAthlete] = useState<object>({});
-  const [activities, setActivities] = useState<Array<object>>([]);
-
-  const navigate = useNavigate();
-
 
   const setStravaCode = useStravaAuthStore(
     (state) => state.setStravaCode
@@ -52,17 +41,9 @@ function App() {
   );
 
 
-  const setStravaActivities = useActivitiesStore(
-    (state) => state.setStravaActivities
-  );
-  const stravaActivities = useActivitiesStore(
-    (state) => state.stravaActivities
-  );
-
-  const setStats = useStatsStore((state) => state.setStats);
-  const stats = useStatsStore((state) => state.stats);
-
-
+  // const setStravaActivities = useActivitiesStore(
+  //   (state) => state.setStravaActivities
+  // );
 
   const handleStravaOAuth = async (code: string) => {
     const response = await fetch('https://www.strava.com/api/v3/oauth/token', {
@@ -90,10 +71,9 @@ function App() {
   const handleStravaRedirect = async () => {
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code');
-    // setCode(code);
-    setStravaCode(code);
-    console.log('Strava Code from URL:', code);
     if (code) {
+      setStravaCode(code);
+      console.log('Strava Code from URL:', code);
       await handleStravaOAuth(code);
       window.history.pushState({}, '', '/'); // Clear the code from the URL
     } else {
@@ -136,28 +116,28 @@ function App() {
   }
 
 
-  const handleGetAthleteActivities = async () => {
-    if (!stravaToken) {
-      console.error('Strava token is not available');
-      return;
-    }
+  // const handleGetAthleteActivities = async () => {
+  //   if (!stravaToken) {
+  //     console.error('Strava token is not available');
+  //     return;
+  //   }
 
-    const response = await fetch('https://www.strava.com/api/v3/athlete/activities', {
-      headers: {
-        Authorization: `Bearer ${stravaToken}`,
-      },
-    });
+  //   const response = await fetch('https://www.strava.com/api/v3/athlete/activities', {
+  //     headers: {
+  //       Authorization: `Bearer ${stravaToken}`,
+  //     },
+  //   });
 
-    if (!response.ok) {
-      console.error('Failed to fetch Strava athlete activities');
-      return;
-    }
+  //   if (!response.ok) {
+  //     console.error('Failed to fetch Strava athlete activities');
+  //     return;
+  //   }
 
-    const activitiesData = await response.json();
-    setActivities(activitiesData);
-    setStravaActivities(activitiesData);
-    console.log('Strava Athlete Activities:', activitiesData);
-  }
+  //   const activitiesData = await response.json();
+  //   setActivities(activitiesData);
+  //   setStravaActivities(activitiesData);
+  //   console.log('Strava Athlete Activities:', activitiesData);
+  // }
 
   // const handleGetStravaAtheleteStatsClick = async (id: number) => {
   //   if (!stravaToken) {
@@ -186,10 +166,10 @@ function App() {
   // }
 
 
-  const getGroups = async () => {
-    const { data } = await supabase.from('group').select();
-    if (data) setGroups(data as Group[]);
-  };
+  // const getGroups = async () => {
+  //   const { data } = await supabase.from('group').select();
+  //   if (data) setGroups(data as Group[]);
+  // };
 
   useEffect(() => {
     // getGroups();
@@ -239,13 +219,7 @@ function App() {
 
 
 
-      {stravaToken &&
-        <>
-          <button className='cursor-pointer text-white px-4 py-2 bg-[#646cff]/80 hover:bg-[#646cff] rounded-full' onClick={() => navigate('/stats')}>
-            View your stats
-          </button>
-        </>
-      }
+
 
       {/* 
       {stravaAthlete && (
