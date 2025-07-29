@@ -196,18 +196,19 @@ function App() {
           {stravaCode && <p>Strava Code: {stravaCode}</p>}
           {stravaToken && <p>Strava Token: {stravaToken}</p>}
 
-          <div>
-            <button className='cursor-pointer text-white px-4 py-2 bg-[#646cff]/80 hover:bg-[#646cff] rounded-full' onClick={handleGetStravaAtheleteAccessTokenButtonClick}>
-              Access your Strava Athlete Data
-            </button>
-            {stravaAthlete && <span className='text-green-500'>Athlete Data Accessed</span>}
-            {/* <button onClick={handleGetAthleteActivities}>
+          {stravaToken &&
+            <div>
+              {!stravaAthlete && <button className='cursor-pointer text-white px-4 py-2 bg-[#646cff]/80 hover:bg-[#646cff] rounded-full' onClick={handleGetStravaAtheleteAccessTokenButtonClick}>
+                Access your Strava Athlete Data
+              </button>}
+              {stravaAthlete && <span className='text-green-500'>Athlete Data Accessed</span>}
+              {/* <button onClick={handleGetAthleteActivities}>
             Get Strava Athlete Activities
           </button>
           <button onClick={() => handleGetStravaAtheleteStatsClick(athlete?.id)}>
             Get Strava Athlete Stats
           </button> */}
-          </div>
+            </div>}
 
         </div>
         <div className="p-4 rounded shadow">
@@ -243,7 +244,7 @@ function App() {
           </li>
         ))}
       </ul> */}
-    </div>
+    </div >
   );
 }
 
