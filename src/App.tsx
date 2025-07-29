@@ -83,7 +83,7 @@ function App() {
 
   const handleStravaLoginClick = () => {
     const clientId = 167783; // Replace with your Strava client ID
-    const redirectUri = 'http://localhost:5173/'; // Replace with your redirect URI
+    const redirectUri = 'https://strava-rundown-bqax.vercel.app/'; // Replace with your redirect URI
     const scope = 'read,activity:read_all'; // Adjust scopes as needed
 
     const stravaAuthUrl = `https://www.strava.com/oauth/authorize?client_id=${clientId}&response_type=code&redirect_uri=${encodeURIComponent(redirectUri)}&scope=${scope}`;
