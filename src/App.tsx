@@ -184,7 +184,7 @@ function App() {
     <div>
       <NavigationMenu />
       <hr className='my-4' />
-      <h1 className='text-3xl font-bold mb-4'>Strava Athlete Snapshot</h1>
+      <h1 className='text-3xl font-bold mb-4'>Strava Athlete Rundown</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="p-4 rounded shadow">
@@ -214,13 +214,18 @@ function App() {
         </div>
         <div className="p-4 rounded shadow">
           {/* Right column content */}
-          <h2 className="text-xl font-bold mb-2">Hi {`${stravaAthlete?.firstname} ${stravaAthlete?.lastname}`}</h2>
-          <button className='cursor-pointer text-white px-4 py-2 bg-[#646cff]/80 hover:bg-[#646cff] rounded-full'><Link to="/stats">View your stats</Link></button>
+          {!stravaAthlete && (
+            <p>No Strava Athlete Data Available. Please login to Strava.</p>
+          )}
+          {stravaAthlete && (
+            <div className="athlete-summary">
+              <h2 className="text-xl font-bold mb-2">Hi {`${stravaAthlete?.firstname} ${stravaAthlete?.lastname}`}</h2>
+              <button className='cursor-pointer text-white px-4 py-2 bg-[#646cff]/80 hover:bg-[#646cff] rounded-full'><Link to="/stats">View your stats</Link></button>
+            </div>
+          )}
+
         </div>
       </div>
-
-
-
 
 
       {/* 
