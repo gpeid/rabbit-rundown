@@ -5,17 +5,17 @@ const NavigationMenu = () => {
         <nav className="p-4">
             <ul className="flex space-x-4">
                 <li>
-                    <Link className="text-blue-600" to="/">Home</Link>
+                    <Link className="text-[#646cff]" to="/">Home</Link>
                 </li>
-                <li>
-                    <Link className="text-blue-600" to="/athletes">Athletes</Link>
-                </li>
-                <li>
-                    <Link className="text-blue-600" to="/activities">Activities</Link>
+                {/* <li>
+                    <Link className="text-[#646cff]" to="/athletes">Athletes</Link>
+                </li> */}
+                {/* <li>
+                    <Link className="text-[#646cff]" to="/activities">Activities</Link>
 
-                </li>
+                </li> */}
                 <li>
-                    <Link className="text-blue-600" to="/stats">Stats</Link>
+                    <Link className="text-[#646cff]" to="/stats">Stats</Link>
                 </li>
 
             </ul>

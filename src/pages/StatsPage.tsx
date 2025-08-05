@@ -4,6 +4,7 @@ import useStravaAuthStore from "../stores/stravaAuthSlice";
 import { useNavigate } from "react-router";
 import useStatsStore from "../stores/statsSlice";
 import useAthleteStore from "../stores/athleteSlice";
+import NavigationMenu from "../components/NavigationMenu";
 
 const StatsPage = () => {
   const navigate = useNavigate();
@@ -46,7 +47,11 @@ const StatsPage = () => {
 
   return (
     <div>
+      <NavigationMenu />
       <h1 className="text-3xl">Stats Page</h1>
+      <a className="text-[#FC5200]" href="https://www.strava.com/" target="_blank" rel="noopener noreferrer">
+        View on Strava
+      </a>
       <StatsBlock />
     </div>
   );
