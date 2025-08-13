@@ -17,6 +17,9 @@ const NavigationMenu = () => {
                 <li>
                     <Link className="text-[#646cff]" to="/stats">Stats</Link>
                 </li>
+                <li>
+                    <Link className="text-[#646cff]" to="/activities">Activities</Link>
+                </li>
 
             </ul>
         </nav>

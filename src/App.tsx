@@ -8,6 +8,7 @@ import LoginImage from './assets/btn_strava_connect_with_orange_x2.png';
 import { Link } from 'react-router';
 import Footer from './components/Footer';
 import useStravaAuth from './hooks/useStravaAuth';
+import ActivitiesBlock from './components/ActivitiesBlock';
 
 // const supabase = createClient(
 //   import.meta.env.VITE_SUPABASE_URL,
@@ -36,28 +37,7 @@ function App() {
     (state) => state.stravaAthlete
   );
 
-  // const handleGetAthleteActivities = async () => {
-  //   if (!stravaToken) {
-  //     console.error('Strava token is not available');
-  //     return;
-  //   }
 
-  //   const response = await fetch('https://www.strava.com/api/v3/athlete/activities', {
-  //     headers: {
-  //       Authorization: `Bearer ${stravaToken}`,
-  //     },
-  //   });
-
-  //   if (!response.ok) {
-  //     console.error('Failed to fetch Strava athlete activities');
-  //     return;
-  //   }
-
-  //   const activitiesData = await response.json();
-  //   setActivities(activitiesData);
-  //   setStravaActivities(activitiesData);
-  //   console.log('Strava Athlete Activities:', activitiesData);
-  // }
 
   // const handleGetStravaAtheleteStatsClick = async (id: number) => {
   //   if (!stravaToken) {
@@ -102,9 +82,9 @@ function App() {
     <div>
       <NavigationMenu />
       <hr className='my-4' />
-      <h1 className='text-3xl font-bold mb-4'>Strava Athlete Rundown</h1>
+      <h1 className='text-3xl font-bold mb-4'>Athlete Rundown</h1>
       <hr className='my-4' />
-      <p className='mb-4'>This is a Strava Athlete Rundown app. It allows you to connect with your Strava account and view your athlete data.</p>
+      <p className='mb-4'>This is the Athlete Rundown app. It allows you to connect with your Strava account and view your athlete data.</p>
       <p className='mb-4'>This app is built with React, TypeScript, and Supabase. It uses the Strava API to fetch athlete data.</p>
       <hr className='my-4' />
 
@@ -121,21 +101,21 @@ function App() {
           {stravaToken &&
             <div>
               {/* {!stravaAthlete && <button className='cursor-pointer text-white px-4 py-2 bg-[#646cff]/80 hover:bg-[#646cff] rounded-full' onClick={handleGetStravaAtheleteAccessTokenButtonClick}>
-                Access your Strava Athlete Data
+                Access your Athlete Data
               </button>} */}
               {stravaAthlete && <span className='text-green-500'>Strava login successful.</span>}
               {/* <button onClick={handleGetAthleteActivities}>
-            Get Strava Athlete Activities
+            Get Athlete Activities
           </button>
           <button onClick={() => handleGetStravaAtheleteStatsClick(athlete?.id)}>
-            Get Strava Athlete Stats
+            Get Athlete Stats
           </button> */}
             </div>}
 
         </div>
         <div className="p-4 rounded shadow">
           {!stravaAthlete && (
-            <p>No Strava Athlete Data Available. Please login to Strava.</p>
+            <p>No Athlete Data Available. Please login to Strava.</p>
           )}
           {stravaAthlete && (
             <div className="athlete-summary">
@@ -143,7 +123,10 @@ function App() {
               <button className='cursor-pointer text-white px-4 py-2 bg-[#646cff]/80 hover:bg-[#646cff] rounded-full'><Link to="/stats">View your stats</Link></button>
             </div>
           )}
-
+        </div>
+        <div className="p-4 rounded shadow col-span-full">
+          Recent Activity
+          <ActivitiesBlock />
         </div>
       </div>
 

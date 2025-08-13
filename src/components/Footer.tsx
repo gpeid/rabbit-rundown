@@ -6,7 +6,7 @@ const Footer = () => {
             <div className="container mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-between">
                     <div className="text-sm text-left">
-                        &copy; {new Date().getFullYear()} Strava Rundown
+                        &copy; {new Date().getFullYear()} Athlete Rundown
                     </div>
                     <div className="text-sm flex items-center justify-end mt-2 md:mt-0">
                         <img

@@ -37,7 +37,6 @@ const StatsPage = () => {
       const statsData = await response.json();
 
       setStats(statsData);
-      console.log("Stats:", stats);
     };
 
 

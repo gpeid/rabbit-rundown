@@ -9,7 +9,10 @@ type StatsState = {
 const useStatsStore = create<StatsState>()(
     persist((set) => ({
         stats: {},
-        setStats: (stats: object) => set(({ stats: stats })),
+        setStats: (stats: object) => {
+            console.log("Setting stats:", stats);
+            set(({ stats: stats }))
+        },
     }), {
         name: 'stats-storage', // name of item in storage
         storage: createJSONStorage(() => localStorage), // (optional) default is localStorage
