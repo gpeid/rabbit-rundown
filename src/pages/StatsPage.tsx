@@ -10,7 +10,7 @@ const StatsPage = () => {
   const navigate = useNavigate();
   const stravaToken = useStravaAuthStore((state) => state.stravaToken);
   const setStats = useStatsStore((state) => state.setStats);
-  const stats = useStatsStore((state) => state.stats);
+  // const stats = useStatsStore((state) => state.stats);
   const stravaAthlete = useAthleteStore((state) => state.stravaAthlete);
   useEffect(() => {
     const getStravaAthleteStats = async (id: string | undefined) => {
