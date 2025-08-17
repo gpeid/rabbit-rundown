@@ -11,6 +11,10 @@ const useStravaAuth = () => {
     const setStravaAthlete = useAthleteStore((state) => state.setStravaAthlete);
 
     const handleStravaOAuth = async (code: string) => {
+        if (!code) {
+            console.error('No code provided for Strava OAuth');
+            return;
+        }
         const response = await fetch('https://www.strava.com/api/v3/oauth/token', {
             method: 'POST',
             headers: {
