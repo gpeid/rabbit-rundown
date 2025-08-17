@@ -51,7 +51,7 @@ const ActivitiesBlock = () => {
         };
 
         fetchActivities();
-    }, []);
+    }, [stravaToken, setStravaActivities]);
 
     return (
         <div>
