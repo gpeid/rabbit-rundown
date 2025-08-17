@@ -88,7 +88,7 @@ function App() {
       <p className='mb-4'>This app is built with React, TypeScript, and Supabase. It uses the Strava API to fetch athlete data.</p>
       <hr className='my-4' />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className={`grid grid-cols-1 ${stravaToken && "md:grid-cols-2"} gap-4`}>
         <div className="p-4 rounded shadow">
           {/* Left column content */}
 
@@ -111,8 +111,8 @@ function App() {
             Get Athlete Stats
           </button> */}
             </div>}
-
         </div>
+
         <div className="p-4 rounded shadow">
           {!stravaAthlete && (
             <p>No Athlete Data Available. Please login to Strava.</p>
@@ -124,6 +124,7 @@ function App() {
             </div>
           )}
         </div>
+
         <div className="p-4 rounded shadow col-span-full">
           Recent Activity
           <ActivitiesBlock />
