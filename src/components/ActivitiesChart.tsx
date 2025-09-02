@@ -13,7 +13,7 @@ type StravaActivity = {
     // add other properties if needed
 };
 
-const width = window.innerWidth* 0.8; // Adjust width based on window size
+const width = window.innerWidth * 0.8; // Adjust width based on window size
 const height = 600;
 const margin = { top: 40, right: 30, bottom: 50, left: 40 };
 
@@ -89,7 +89,7 @@ const ActivitiesChart = () => {
                     <LinePath
                         data={stravaActivities}
                         x={(d) => timeScale(date(d)) ?? 0}
-                        y={(d) => distanceScale((d.distance/1000)) ?? 0}
+                        y={(d) => distanceScale((d.distance / 1000)) ?? 0}
                         stroke="#90aea9"
                         strokeWidth={2}
                     />

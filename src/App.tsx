@@ -9,6 +9,7 @@ import { Link } from 'react-router';
 import Footer from './components/Footer';
 import useStravaAuth from './hooks/useStravaAuth';
 import ActivitiesBlock from './components/ActivitiesBlock';
+import ActivitiesChart from './components/ActivitiesChart';
 
 // const supabase = createClient(
 //   import.meta.env.VITE_SUPABASE_URL,
@@ -128,6 +129,7 @@ function App() {
         <div className="p-4 rounded shadow col-span-full">
           Recent Activity
           <ActivitiesBlock />
+          <ActivitiesChart />
         </div>
       </div>
 
