@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 import useStravaAuth from './hooks/useStravaAuth';
 import ActivitiesBlock from './components/ActivitiesBlock';
 import ActivitiesChart from './components/ActivitiesChart';
+import { SITE_TITLE } from './constants/constants';
 
 // const supabase = createClient(
 //   import.meta.env.VITE_SUPABASE_URL,
@@ -83,9 +84,9 @@ function App() {
     <div>
       <NavigationMenu />
       <hr className='my-4' />
-      <h1 className='text-3xl font-bold mb-4'>Athlete Rundown</h1>
+      <h1 className='text-3xl font-bold mb-4'>{SITE_TITLE}</h1>
       <hr className='my-4' />
-      <p className='mb-4'>This is the Athlete Rundown app. It allows you to connect with your Strava account and view your athlete data.</p>
+      <p className='mb-4'>This is the {SITE_TITLE} app. It allows you to connect with your Strava account and view your athlete data.</p>
       <p className='mb-4'>This app is built with React, TypeScript, and Supabase. It uses the Strava API to fetch athlete data.</p>
       <hr className='my-4' />
 
