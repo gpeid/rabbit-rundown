@@ -3,14 +3,13 @@ import './App.css';
 // import { createClient } from '@supabase/supabase-js';
 import useAthleteStore from './stores/athleteSlice';
 import useStravaAuthStore from './stores/stravaAuthSlice';
-import NavigationMenu from './components/NavigationMenu';
 import LoginImage from './assets/btn_strava_connect_with_orange_x2.png';
 import { Link } from 'react-router';
-import Footer from './components/Footer';
 import useStravaAuth from './hooks/useStravaAuth';
 import ActivitiesBlock from './components/ActivitiesBlock';
 import ActivitiesChart from './components/ActivitiesChart';
 import { SITE_TITLE } from './constants/constants';
+import Layout from './components/Layout';
 
 // const supabase = createClient(
 //   import.meta.env.VITE_SUPABASE_URL,
@@ -81,8 +80,8 @@ function App() {
 
 
   return (
-    <div>
-      <NavigationMenu />
+    <Layout>
+
       <hr className='my-4' />
       <h1 className='text-3xl font-bold mb-4'>{SITE_TITLE}</h1>
       <hr className='my-4' />
@@ -102,7 +101,7 @@ function App() {
 
           {stravaToken &&
             <div>
-              {/* {!stravaAthlete && <button className='cursor-pointer text-white px-4 py-2 bg-[#646cff]/80 hover:bg-[#646cff] rounded-full' onClick={handleGetStravaAtheleteAccessTokenButtonClick}>
+              {/* {!stravaAthlete && <button className='cursor-pointer text-white px-4 py-2 bg-[#5c64f7]/80 hover:bg-[#5c64f7] rounded-full' onClick={handleGetStravaAtheleteAccessTokenButtonClick}>
                 Access your Athlete Data
               </button>} */}
               {stravaAthlete && <span className='text-green-500'>Strava login successful.</span>}
@@ -122,7 +121,7 @@ function App() {
           {stravaAthlete && (
             <div className="athlete-summary">
               <h2 className="text-xl font-bold mb-2">Hi {`${stravaAthlete?.firstname} ${stravaAthlete?.lastname}`}</h2>
-              <button className='cursor-pointer text-white px-4 py-2 bg-[#646cff]/80 hover:bg-[#646cff] rounded-full'><Link to="/stats">View your stats</Link></button>
+              <button className='cursor-pointer text-white px-4 py-2 bg-[#5c64f7]/80 hover:bg-[#5c64f7] rounded-full'><Link to="/stats">View your stats</Link></button>
             </div>
           )}
         </div>
@@ -134,8 +133,7 @@ function App() {
         </div>
       </div>
 
-      <Footer />
-    </div >
+    </Layout>
   );
 }
 

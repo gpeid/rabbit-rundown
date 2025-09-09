@@ -2,12 +2,13 @@ import type { Key } from "react";
 import useActivitiesStore from "../stores/activitiesSlice";
 import ActivitiesBlock from "../components/ActivitiesBlock";
 import ActivitiesChart from "../components/ActivitiesChart";
+import Layout from "../components/Layout";
 
 const ActivitiesPage = () => {
   // const athlete = useAthleteStore((state) => state.stravaathlete);
   const activities = useActivitiesStore((state) => state.stravaActivities);
   return (
-    <div>
+    <Layout>
       <h1>Activities Page</h1>
       <p>This is the activities page.</p>
 
@@ -30,7 +31,7 @@ const ActivitiesPage = () => {
       ) : (
         <p>No activities data available.</p>
       )}
-    </div>
+    </Layout>
   );
 };
 
